@@ -22,7 +22,7 @@ static int	ft_formatconversion(char flag, va_list args)
 
 ### `flag == c` || `%c`
 
-This flag will invoke the the function `ft_printchar` which is define inside the file `ft_helper.c`. This function will print a single charater pass by the parametre `int c` to the function with the standard function `write`. Return value is alwasy (1) for success and it will return (-1) for any situation write is faiiling the print the `char`
+This flag will invoke the the function `ft_printchar` defined in file `ft_helper.c`. This function will print a single charater passed as parametre `int c` with the standard function `write`. Return value is alwasy (1) for success and will return (-1) where write is fail to print the `int c`
 
 ```c
 int	ft_printchar(int c)
