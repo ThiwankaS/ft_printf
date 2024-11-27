@@ -28,3 +28,12 @@ This flag will invoke the the function `ft_printchar` defined in file `ft_helper
 int	ft_printchar(int c)
 ```
 ![](./Documents/ft_printchar.drawio.svg)
+
+### `flag == s` || `%s`
+
+This flag will invoke the fucntion `ft_printstr`defined in file `ft_helper.c`. This function will print a string passes as parameter `char *str` with the standard function `write`. If `str` is `NULL` the return value is 6 and output `(null)`. Successful execution will output the string and the retrun value will be eqaual to no of characters printed excluding `NULL` character. It will return (-1) and will not output anything when fail.
+
+```c
+int	ft_printstr(char *str)
+```
+![](./Documents/ft_printstr.drawio.svg)

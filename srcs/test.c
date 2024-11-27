@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "printf.h"
 
 void ft_test_for_char(void)
@@ -113,8 +114,181 @@ void ft_test_for_char(void)
 
 }
 
+void ft_test_for_string(void)
+{
+	int printf_return = 0;
+	int ft_printf_return = 0;
+	char *str1 = "Hive Helsinki ";
+	char *str2 = "is awsome ";
+	char *str3 = "place to learn coding";
+
+	printf("---- Test cases for flag 's' : -----\n");
+
+	printf(" 01. Regular string using double quotaion : \"Hive Helsinki \"\n");
+	printf("      standard : ");
+	printf_return = printf("%s", "Hive Helsinki!");
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", "Hive Helsinki!");
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 02. Regular string using char pointer : char *str = \"Hive Helsinki \"\n");
+	printf("      standard : ");
+	printf_return = printf("%s", str1);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str1);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 03. Mulitiple char pointers : str1, str2, str3 \n");
+	printf("      standard : ");
+	printf_return = printf("%s%s%s", str1, str2, str3);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s%s%s", str1, str2, str3);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	str1 = NULL;
+
+	printf(" 04. Null pointer : str1 = NULL \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str1);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str1);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	str1 = "";
+
+	printf(" 05. Empty string : str1 = \"\" \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str1);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str1);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	char str[5] = {'H','e','l','l','o'};
+
+	printf(" 06. String with out null terminator : char str[5] = {'H','e','l','l','o'} \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	wchar_t *wstr = L"Hello";
+
+	printf(" 07. Wide charaters : L\"Hello\" \n");
+	printf("      standard : ");
+	printf_return = printf("%s", wstr);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", wstr);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	str1 = "Hello";
+
+	printf(" 08. Character pointer arithmatics : str + 2 \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str + 2);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str + 2);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	// char str_lrg[100000];
+	// memset(str_lrg, 'A', 99998);
+	// str_lrg[99999] = '\0';
+
+	// printf(" 09. Very large string : str_lrg[99999] \n");
+	// printf("      standard : ");
+	// printf_return = printf("%s", str_lrg);
+	// printf("\n        - return value : %d \n", printf_return);
+	// printf("      custome  : ");
+	// fflush(stdout);
+	// ft_printf_return = ft_printf("%s", str_lrg);
+	// printf("\n        - return value : %d \n", ft_printf_return);
+
+	char str_ptr[6] = {'H','e','l','\t','l','o'};
+
+	printf(" 10. Non printable character in the middle of the string : char str_ptr[6] = {'H','e','l','\\t','l','o'} \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str_ptr);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str_ptr);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	char str_nll[6] = {'H','e','l','\0','l','o'};
+
+	printf(" 11. Null byte in the middle of the string : char str_ptr[6] = {'H','e','l','\\0','l','o'} \n");
+	printf("      standard : ");
+	printf_return = printf("%s", str_nll);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", str_nll);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 12. No corresponding argument :  \n");
+	printf("      standard : ");
+	printf_return = printf("%s");
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s");
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	char *arr[] = {"Hello", NULL, "World"};
+
+	printf(" 13. Embedded NULL pointers : char *arr[] = {\"Hello\", NULL, \"World\"} \n");
+	printf("      standard : ");
+	printf_return = printf("%s", arr[1]);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s",arr[1]);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 14. Mismatch arguments :  \n");
+	printf("      standard : ");
+	printf_return = printf("%s", 3.14);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%s", 3.14);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+
+	printf(" 15. Mimic an error : \"Hello\" \n");
+	printf("      standard : ");
+	fclose(stdout);
+	printf_return = printf("%s", "Hello");
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custome  : ");
+	fflush(stdout);
+	fclose(stdout);
+	ft_printf_return = ft_printf("%s", "Hello");
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+}
+
 int main(void)
 {
-	ft_test_for_char();
+	//ft_test_for_char();
+	ft_test_for_string();
 	return (0);
 }
