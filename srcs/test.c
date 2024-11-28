@@ -781,6 +781,336 @@ void ft_test_for_integers(void)
 	freopen("/dev/tty", "w", stdout);
 	printf("\n        - return value : %d \n", ft_printf_return);
 }
+
+void ft_test_for_decimal(void)
+{
+    int printf_return = 0;
+    int ft_printf_return = 0;
+
+    printf("---- Test cases for flag 'd' : -----\n");
+
+    printf(" 01. Regular positive integer: 42\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 42);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 42);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 02. Zero: 0\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 0);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 0);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 03. Large positive integer: 4294967295\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 4294967295U);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 4294967295U);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 04. Negative integer: -42\n");
+    printf("      standard : ");
+    printf_return = printf("%d", -42);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", -42);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 05. INT_MAX: 2147483647\n");
+    printf("      standard : ");
+    printf_return = printf("%d", INT_MAX);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", INT_MAX);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 06. INT_MIN: -2147483648\n");
+    printf("      standard : ");
+    printf_return = printf("%d", INT_MIN);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", INT_MIN);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 07. ULLONGMAX: 18446744073709551615\n");
+    printf("      standard : ");
+    printf_return = printf("%d", ULLONG_MAX);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", ULLONG_MAX);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 08. LLONGMIN: -9223372036854775807\n");
+    printf("      standard : ");
+    printf_return = printf("%d", LLONG_MIN);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", LLONG_MIN);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 09. No corresponding argument : \n");
+    printf("      standard : ");
+    printf_return = printf("%d");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 10. Hexa decimal value in lower case : 0x1e240\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 0x1e240);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 0x1e240);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 11. Hexa decimal value in upper case : 0x1E240\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 0x1E240);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 0x1E240);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 12. Mismatch argument: 3.14\n");
+    printf("      standard : ");
+    printf_return = printf("%d", 3.14);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%d", 3.14);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 13. Mimic an error: \n");
+	printf("      standard : ");
+	fclose(stdout);
+	printf_return = printf("%d", 255);
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custom   : ");
+	fflush(stdout);
+	fclose(stdout);
+	ft_printf_return = ft_printf("%d", 255);
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", ft_printf_return);
+}
+
+void ft_test_for_unsinged(void)
+{
+    int printf_return = 0;
+    int ft_printf_return = 0;
+
+    printf("---- Test cases for flag 'u' : -----\n");
+
+    printf(" 01. Regular positive integer: 42\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 42);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 42);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 02. Zero: 0\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 0);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 0);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 03. Large positive integer: 4294967295\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 4294967295U);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 4294967295U);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 04. Negative integer: -42\n");
+    printf("      standard : ");
+    printf_return = printf("%u", -42);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", -42);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 05. INT_MAX: 2147483647\n");
+    printf("      standard : ");
+    printf_return = printf("%u", INT_MAX);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", INT_MAX);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 06. INT_MIN: -2147483648\n");
+    printf("      standard : ");
+    printf_return = printf("%u", INT_MIN);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", INT_MIN);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 07. ULLONGMAX: 18446744073709551615\n");
+    printf("      standard : ");
+    printf_return = printf("%u", ULLONG_MAX);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", ULLONG_MAX);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 08. LLONGMIN: -9223372036854775807\n");
+    printf("      standard : ");
+    printf_return = printf("%u", LLONG_MIN);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", LLONG_MIN);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 09. No corresponding argument : \n");
+    printf("      standard : ");
+    printf_return = printf("%u");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 10. Hexa decimal value in lower case : 0x1e240\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 0x1e240);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 0x1e240);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 11. Hexa decimal value in upper case : 0x1E240\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 0x1E240);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 0x1E240);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 12. Mismatch argument: 3.14\n");
+    printf("      standard : ");
+    printf_return = printf("%u", 3.14);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%u", 3.14);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 13. Mimic an error: \n");
+	printf("      standard : ");
+	fclose(stdout);
+	printf_return = printf("%u", 255);
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custom   : ");
+	fflush(stdout);
+	fclose(stdout);
+	ft_printf_return = ft_printf("%u", 255);
+	freopen("/dev/tty", "w", stdout);
+	printf("\n        - return value : %d \n", ft_printf_return);
+}
+
+void ft_test_for_percentage(void)
+{
+    int printf_return = 0;
+    int ft_printf_return = 0;
+
+    printf("---- Test cases for flag '%c' : -----\n", '%');
+
+    printf(" 01. %c character ending with null byte\n", '%');
+    printf("      standard : ");
+    printf_return = printf("%");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 02. two %c characters\n",'%');
+    printf("      standard : ");
+    printf_return = printf("%%");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%%", 0);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 03. Three or more %c characters\n",'%');
+    printf("      standard : ");
+    printf_return = printf("%%%", 4294967295U);
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%%%", 4294967295U);
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+    printf(" 04. Two %c characters with space in between\n", '%');
+    printf("      standard : ");
+    printf_return = printf("% %");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("% %");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 05. %c character followed by some regular characters\n",'%');
+    printf("      standard : ");
+    printf_return = printf("%help");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%help");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 06. Invalid flag : %ck\n", '%');
+    printf("      standard : ");
+    printf_return = printf("%k");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%k");
+    printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 07. Invalid flag followed by regular characters\n");
+    printf("      standard : ");
+    printf_return = printf("%k help");
+    printf("\n        - return value : %d \n", printf_return);
+    printf("      custom   : ");
+    fflush(stdout);
+    ft_printf_return = ft_printf("%k help");
+    printf("\n        - return value : %d \n", ft_printf_return);
+}
+
 int main(void)
 {
 	//ft_test_for_char();
@@ -788,6 +1118,9 @@ int main(void)
 	//ft_test_for_pointer();
 	//ft_test_for_hex_lowercase();
 	//ft_test_for_hex_uppercase();
-	ft_test_for_integers();
+	//ft_test_for_integers();
+	//ft_test_for_decimal();
+	//ft_test_for_unsinged();
+	ft_test_for_percentage();
 	return (0);
 }
