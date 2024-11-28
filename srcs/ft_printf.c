@@ -6,11 +6,23 @@
 /*   By: tsomacha <tsomacha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 20:58:52 by tsomacha          #+#    #+#             */
-/*   Updated: 2024/11/24 16:48:51 by tsomacha         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:45:13 by tsomacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_handleexception(char percentage, char flag)
+{
+	int	len;
+	int	res;
+
+	len = ft_printchar(percentage);
+	res = ft_printchar(flag);
+	if (len < 0 || res < 0)
+		return (-1);
+	return (res + len);
+}
 
 static int	ft_formatconversion(char flag, va_list args)
 {
@@ -31,7 +43,7 @@ static int	ft_formatconversion(char flag, va_list args)
 	else if (flag == '%')
 		return (ft_printchar('%'));
 	else
-		return (-1);
+		return (ft_handleexception('%', flag));
 }
 
 static int	ft_handleformat(const char *format, va_list args, int *ptr, int *e)
