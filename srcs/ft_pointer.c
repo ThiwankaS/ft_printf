@@ -14,32 +14,50 @@
 
 int	ft_pointer(uintptr_t nbr)
 {
-	int	length;
+	int	len;
+	int	res;
 
-	length = 0;
+	len = 0;
+	res = 0;
 	if (nbr < 16)
-		length += ft_printdigit(nbr, 0);
+	{
+		res = ft_printdigit(nbr, 0);
+		if(res < 0)
+			return (-1);
+		len += res;
+	}
 	else
 	{
-		length += ft_pointer((nbr / 16));
-		length += ft_printdigit((nbr % 16), 0);
+		res = ft_pointer((nbr / 16));
+		len = ft_printdigit((nbr % 16), 0);
+		if(res < 0 || len < 0)
+			return (-1);
+		len += res;
 	}
-	return (length);
+	return (len);
 }
 
 int	ft_printpointer(uintptr_t nbr)
 {
-	int	length;
+	int	len;
+	int	res;
 
-	length = 0;
+	len = 0;
+	res = 0;
 	if (nbr == 0)
 	{
-		length += ft_printstr("(nil)");
+		res = ft_printstr("(nil)");
+		if(res < 0)
+			return (-1);
+		len += res;
 	}
 	else
 	{
-		length += ft_printstr("0x");
-		length += ft_pointer(nbr);
+		res = ft_printstr("0x");
+		len = ft_pointer(nbr);
+		if(res < 0 || len < 0)
+			return (-1);
+		len += res;
 	}
-	return (length);
+	return (len);
 }
