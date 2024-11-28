@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "ft_printf.h"
 
 void ft_test_for_char(void)
@@ -381,7 +382,37 @@ void ft_test_for_pointer(void)
 	ft_printf_return = ft_printf("%p", arr[1]);
 	printf("\n        - return value : %d \n", ft_printf_return);
 
-	printf(" 10. Mimic an error: fclose(stdout)\n");
+	printf(" 10. Special pointer: (void *)0\n");
+	printf("      standard : ");
+	printf_return = printf("%p", (void *)0);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custom   : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%p", (void *)0);
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+	printf(" 11. dynamically allocated pointer: malloc(1 * sizeof(int))\n");
+	int *ptrd = malloc(1 * sizeof(int));
+	printf("      standard : ");
+	printf_return = printf("%p", ptrd);
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custom   : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%p", ptrd);
+	printf("\n        - return value : %d \n", ft_printf_return);
+	free(ptrd);
+
+	printf(" 12. No corresponding argument: \n");
+	printf("      standard : ");
+	printf_return = printf("%p");
+	printf("\n        - return value : %d \n", printf_return);
+	printf("      custom   : ");
+	fflush(stdout);
+	ft_printf_return = ft_printf("%p");
+	printf("\n        - return value : %d \n", ft_printf_return);
+
+
+	printf(" 13. Mimic an error: \n");
 	printf("      standard : ");
 	fclose(stdout);
 	printf_return = printf("%p", ptr);
@@ -1118,9 +1149,9 @@ int main(void)
 	//ft_test_for_pointer();
 	//ft_test_for_hex_lowercase();
 	//ft_test_for_hex_uppercase();
-	//ft_test_for_integers();
+	ft_test_for_integers();
 	//ft_test_for_decimal();
 	//ft_test_for_unsinged();
-	ft_test_for_percentage();
+	//ft_test_for_percentage();
 	return (0);
 }
